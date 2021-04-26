@@ -40,7 +40,7 @@ class CurrencyImportCommand extends Command
      */
     public function handle()
     {
-        $i=10;
+        $i=60;
         while (true){
             $this->XMLService->importCurrencyModel();
             while ($i!=0){
@@ -49,7 +49,7 @@ class CurrencyImportCommand extends Command
                 $i--;
             }
             echo 'refresh Success'.PHP_EOL;
-            $i=10;
+            $i=60;
         }
         return 0;
 

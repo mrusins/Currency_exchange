@@ -23,6 +23,7 @@ class XMLRepository
         Currency::query()->delete();
 
 
+
         foreach ($phpArray['Currencies'] as $currency){
             foreach ($currency as $cur){
 
