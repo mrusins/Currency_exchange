@@ -3,29 +3,30 @@
 namespace App\Services;
 
 
-use App\Models\Currency;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+
 
 
 class CalculateService
 {
-    private float $result=0;
+    private string $result='';
 
-    public function calculateRate(array $post, array $get): bool
+    public function calculateRate(string $id, float $amount): bool
     {
-        if (isset($post['id']) && $post['id'] !='') {
-            $rate = DB::table('currencies')->where('ID', $post['id'])->first();
+        if (isset($id) && $id !='') {
+            $rate = DB::table('currencies')->where('ID', $id)->first();
+            if($rate == null){
+                $this->result = 'wrong code';
+            } else {
+                $this->result = ($amount * $rate->Rate)/100000;
 
-
-            $this->result = ((float)$post['amount'] * $rate->Rate)/100000;
-
+            }
 
             return true;
         }
         return false;
     }
-    public function getResult():float{
+    public function getResult():string{
         return $this->result;
     }
 }

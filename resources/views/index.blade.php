@@ -19,7 +19,7 @@
 
     <div class="bg-gray-100">
         <div class="absolute top-2 right-3 h-10 w-30">
-        <form action="/rates" method="post">
+        <form action="/" method="post">
             @csrf
             <a class="text-xs  font-thin">last updated: {{$id[0]->updated_at}}</a>
             <button  class="px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded
@@ -47,6 +47,28 @@
     </div>
 
     <div class="bg-gray-100 flex justify-center">
+
+
+        <div class="group inline-block pt-5 pr-5">
+            <form action="/" method="post">
+                @csrf
+                <div class="flex flex-row bg-gray-200">
+
+                    <span class="flex items-center bg-grey-lighter rounded rounded-r-none px-3 font-bold text-grey-darker">» </span>
+                    <input type="text" name="search" id="search" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none font-bold">
+                </div>
+                <input type="hidden" id="lname" name="id" value="{{$chose}}">
+                <div class="">
+                    <button type="submit" class="inline-block align-middle pt-2 pl-44">search</button>
+
+                </div>
+            </form>
+        </div>
+
+
+        <h1 class="group inline-block pt-7 pr-5">OR</h1>
+
+
 
         <div class="group inline-block pt-5 pr-5">
             <button
@@ -79,7 +101,7 @@
   transition duration-150 ease-in-out origin-top min-w-32"
             >
                 @foreach($id as $cur)
-                    <form action="/rates" method="post" id="currency">
+                    <form action="/" method="post" id="currency">
                         @csrf
                         <input type="hidden" id="currency" name="ID" value="{{$cur->ID}}">
                         <button type="submit" formmethod="post"><a><img
@@ -93,11 +115,11 @@
 
 
         <div class="bg-gray-100 pt-5 pl-5">
-            <form action="/rates" method="post">
+            <form action="/" method="post">
                 @csrf
                 <div class="flex flex-row bg-gray-200">
 
-                <span class="flex items-center bg-grey-lighter rounded rounded-r-none px-3 font-bold text-grey-darker">$</span>
+                <span class="flex items-center bg-grey-lighter rounded rounded-r-none px-4 font-bold text-grey-darker">»</span>
                 <input type="number" name="amount" id="lname" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none font-bold">
                 </div>
                 <input type="hidden" id="lname" name="id" value="{{$chose}}">
@@ -110,6 +132,7 @@
 
         </div>
     </div>
+
 </div>
 
 
